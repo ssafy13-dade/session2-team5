@@ -38,16 +38,16 @@ with open(file_path, newline='', encoding='utf-8') as file:
             BMT[headers[i]] = row[i]
         producer.send('bmt_data', value=BMT)
 
-# Test Kafka Consumer 생성
-consumer = KafkaConsumer(
-	'bms_data',   # 구독할 토픽 설정 
-    'bcv_data',
-    'bmt_data',
-    bootstrap_servers="localhost:9092",   # Kafka 브로커 주소 설정
-    auto_offset_reset="earliest",   # 오프셋 초기화 방식 설정
-    enable_auto_commit=True,   # 자동 오프셋 커밋 여부 설정
-)
+# # Test Kafka Consumer 생성
+# consumer = KafkaConsumer(
+# 	'bms_data',   # 구독할 토픽 설정 
+#     'bcv_data',
+#     'bmt_data',
+#     bootstrap_servers="localhost:9092",   # Kafka 브로커 주소 설정
+#     auto_offset_reset="earliest",   # 오프셋 초기화 방식 설정
+#     enable_auto_commit=True,   # 자동 오프셋 커밋 여부 설정
+# )
 
-# json.loads 쓰면 decode한 내용을 바로 key: value로 접근 가능(안하면 문자열 형태)
-for message in consumer:
-    print(f"[{message.topic}] {message.value.decode('utf-8')}")
+# # json.loads 쓰면 decode한 내용을 바로 key: value로 접근 가능(안하면 문자열 형태)
+# for message in consumer:
+#     print(f"[{message.topic}] {message.value.decode('utf-8')}")
