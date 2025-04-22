@@ -48,6 +48,6 @@ consumer = KafkaConsumer(
     enable_auto_commit=True,   # 자동 오프셋 커밋 여부 설정
 )
 
-# json.loads 써서 decode한 내용을 바로 key: value로 접근 가능(안하면 문자열 형태)
+# json.loads 쓰면 decode한 내용을 바로 key: value로 접근 가능(안하면 문자열 형태)
 for message in consumer:
     print(f"[{message.topic}] {message.value.decode('utf-8')}")
