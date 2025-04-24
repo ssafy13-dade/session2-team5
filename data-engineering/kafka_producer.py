@@ -2,6 +2,9 @@ import csv
 import json
 from kafka import KafkaConsumer, KafkaProducer
 
+# $KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
+# $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
+
 # Kafka Producer 생성
 producer = KafkaProducer(
     bootstrap_servers="localhost:9092",  # Kafka 브로커 주소 설정
@@ -9,7 +12,8 @@ producer = KafkaProducer(
 )
 
 # 파일은 처리하지 않은 파일을 순서대로 처리할 수 있게 선택하는 방법을 강구할 것
-file_path = "../raw_data/train/1000_chg.csv"
+# 이거 환경 구성 확실하게 하고 모든 파일에서 경로 설정 다시
+file_path = "/opt/airflow/dags/project/1000_chg.csv"
 
 # Kafka로 send
 with open(file_path, newline='', encoding='utf-8') as file:

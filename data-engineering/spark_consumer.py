@@ -30,7 +30,7 @@ df_parsed = df_cast \
 # 출력
 # 실행 명령어: spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.4 data-engineering/spark_consumer.py
 data = df_parsed.collect()
-for row in data:
+for row in data[:10]:
     print(row)
     
     # if row['key'] == 'Time':  # key가 'Time'인 행을 찾음
